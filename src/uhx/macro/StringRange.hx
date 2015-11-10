@@ -52,13 +52,31 @@ class StringRange {
 	}
 	
 	public static function handleRangeIterator(e1:Expr, start:String, end:String):Expr {
-		var values = [for (code in start.fastCodeAt( 0 )...end.fastCodeAt( 0 )+1) String.fromCharCode( code )];
+		var startCode = start.fastCodeAt( 0 );
+		var endCode = end.fastCodeAt( 0 );
+		var reverse = startCode > endCode;
+		var values = [];
+		
+		while (reverse ? startCode > endCode-1 : startCode < endCode+1) {
+			values.push( String.fromCharCode( startCode ) );
+			reverse ? startCode-- : startCode++;
+		}
+		
 		var exprs = values.map( function(s) { return macro $v { s }; } );
 		return (macro $e1 in $a { exprs } );
 	}
 	
 	public static function handleRangeString(start:String, end:String):Expr {
-		var values = [for (code in start.fastCodeAt( 0 )...end.fastCodeAt( 0 )+1) String.fromCharCode( code )];
+		var startCode = start.fastCodeAt( 0 );
+		var endCode = end.fastCodeAt( 0 );
+		var reverse = startCode > endCode;
+		var values = [];
+		
+		while (reverse ? startCode > endCode-1 : startCode < endCode+1) {
+			values.push( String.fromCharCode( startCode ) );
+			reverse ? startCode-- : startCode++;
+		}
+		
 		return macro $v{ values.join('') };
 	}
 	
