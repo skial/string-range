@@ -3,8 +3,10 @@ package uhx.macro;
 import haxe.macro.Type;
 import haxe.macro.Expr;
 import haxe.macro.Context;
+import unifill.CodePoint;
 
 using StringTools;
+using unifill.Unifill;
 using haxe.macro.ExprTools;
 
 /**
@@ -52,13 +54,13 @@ class StringRange {
 	}
 	
 	public static function handleRangeIterator(e1:Expr, start:String, end:String):Expr {
-		var startCode = start.fastCodeAt( 0 );
-		var endCode = end.fastCodeAt( 0 );
+		var startCode = start.uCharCodeAt( 0 );
+		var endCode = end.uCharCodeAt( 0 );
 		var reverse = startCode > endCode;
 		var values = [];
 		
 		while (reverse ? startCode > endCode-1 : startCode < endCode+1) {
-			values.push( String.fromCharCode( startCode ) );
+			values.push( CodePoint.fromInt( startCode ).toString() );
 			reverse ? startCode-- : startCode++;
 		}
 		
@@ -67,13 +69,13 @@ class StringRange {
 	}
 	
 	public static function handleRangeString(start:String, end:String):Expr {
-		var startCode = start.fastCodeAt( 0 );
-		var endCode = end.fastCodeAt( 0 );
+		var startCode = start.uCharCodeAt( 0 );
+		var endCode = end.uCharCodeAt( 0 );
 		var reverse = startCode > endCode;
 		var values = [];
 		
 		while (reverse ? startCode > endCode-1 : startCode < endCode+1) {
-			values.push( String.fromCharCode( startCode ) );
+			values.push( CodePoint.fromInt( startCode ).toString() );
 			reverse ? startCode-- : startCode++;
 		}
 		
