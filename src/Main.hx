@@ -8,6 +8,8 @@ package;
 class Main {
 	
 	static function main() {
+		var range = 'b'...'z';
+		trace( range );
 		for (character in 'a'...'z') {
 			trace( character );
 			
