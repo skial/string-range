@@ -1,0 +1,12 @@
+-lib klas
+-lib unifill
+-cp src
+-main Main
+
+--each
+
+-js bin/stringrange.js
+
+--next
+
+-neko bin/stringrange.n

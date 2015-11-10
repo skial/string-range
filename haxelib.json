@@ -1,0 +1,15 @@
+{
+  "name": "StringRange",
+  "license": "MIT",
+  "classPath": "src",
+  "tags": ["uhu", "uhx", "macro", "string", "unicode", "range"],
+  "description": "A build macro which adds String range to Haxe.",
+  "contributors": ["skial"],
+  "releasenote": "Initial Release",
+  "version": "0.0.1-alpha",
+  "url": "https://github.com/skial/string-range",
+  "dependencies": {
+	"klas": "",
+	"unifill": ""
+  }
+}
