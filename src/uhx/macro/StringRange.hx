@@ -36,11 +36,15 @@ class StringRange {
 				case EBinop( OpInterval, { expr:EConst(CString(start)), pos:_ }, { expr:EConst(CString(end)), pos:_ } ) if (start.length > 0 && end.length > 0):
 					v.expr.expr = handleRangeString( start, end ).expr;
 					
-				case _:
+				case EArrayDecl( [ { expr:EFor(condition, body), pos:_ } ]):
+					handler( condition );
 					
+				case _:
+					trace( v.expr );
 			}
 				
 			case _:
+				//trace( expr );
 				expr.iter( handler );
 				
 		}

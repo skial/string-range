@@ -8,12 +8,22 @@ package;
 class Main {
 	
 	static function main() {
-		var range = 'b'...'z';
-		trace( range );
-		for (character in 'a'...'z') {
-			trace( character );
-			
-		}
+		var range = 'a'...'z';
+		trace(range);
+		
+		for (character in 'a'...'z') trace( character );
+		
+		var characters = [for (character in 'a'...'z') character];
+		trace( characters );
+		
+		// in reverse
+		var range = 'z'...'a';
+		trace(range);
+		
+		for (character in 'z'...'a') trace( character );
+		
+		var characters = [for (character in 'z'...'a') character];
+		trace( characters );
 	}
 	
 }
