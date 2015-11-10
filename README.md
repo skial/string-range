@@ -26,6 +26,7 @@ class Main {
 	}
 	
 }
+```
 
 ## How it works
 
